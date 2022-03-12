@@ -1,13 +1,11 @@
 import java.io.*;
-import java.text.*;
-import java.util.*;
 import java.net.*;
-//TEST! 
-//TEst2?
+
 public class Server
 {
 	public static void main(String[] args) throws IOException
 	{
+		@SuppressWarnings("resource")
 		ServerSocket ss = new ServerSocket(4444);
 		
 		while (true)
@@ -43,7 +41,7 @@ class ClientHandler extends Thread
 	final BufferedReader read;
 	final PrintWriter write;
 	final Socket s;
-	
+	 
 
 	public ClientHandler(Socket s, BufferedReader read, PrintWriter write)
 	{
@@ -56,12 +54,9 @@ class ClientHandler extends Thread
 	public void run()
 	{
 		String received;
-		String send;
 		while (true)
 		{
 			try {
-				
-				write.println("[ClientHandler] " + "Enter a Word: ");
 				received = read.readLine();
 				
 				if(received.equals("Exit"))
@@ -73,7 +68,7 @@ class ClientHandler extends Thread
 					break;
 				}
 				else {
-					write.println("[ClientHandler] " + received + " is what you said!!!!!!");
+					write.println("[ClientHandler] " + received + " is what you said reversed!");
 				}
 
 			} catch (IOException e) {

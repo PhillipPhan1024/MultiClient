@@ -20,13 +20,17 @@ public class Client
 			// information between client and client handler
 			while (true)
 			{
-				System.out.println(read.readLine());
+				System.out.print("[CLIENT] Enter a Word (Type 'Exit' to close the client): ");
 				String tosend = scanner.nextLine();
-				write.println(tosend);
-			
+				
+				StringBuffer sb = new StringBuffer(tosend);
+				sb.reverse();
+				
+				write.println(sb);
 				
 				if(tosend.equals("Exit"))
 				{
+					write.println(tosend);
 					System.out.println("[CLIENT] " + "Closing this connection : " + s);
 					s.close();
 					System.out.println("[CLIENT] " + "Connection closed");
